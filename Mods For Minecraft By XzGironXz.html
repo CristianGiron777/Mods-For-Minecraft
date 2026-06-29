@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mods de Minecraft - Oficial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Imagen de fondo de Minecraft real desde un servidor de imágenes confiable */
+            background-image: url("https://images.alphacoders.com/137/1378370.png");
+            background-color: #1a1a1a;
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 40px;
+            font-size: 3em;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            letter-spacing: 2px;
+        }
+
+        .mod-section {
+            background-color: rgba(0, 0, 0, 0.75);
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #22c55e;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #22c55e;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .mod-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border-left: 5px solid #38bdf8;
+            text-align: left;
+        }
+
+        .mod-card:hover {
+            transform: translateX(10px);
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+
+        .mod-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .mod-info p {
+            font-size: 0.9em;
+            color: #94a3b8;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #22c55e;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton:hover {
+            background-color: #16a34a;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+        }
+
+        /* Estilos del popup mejorados */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup.activo {
+            display: flex;
+        }
+
+        .contenido-popup {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border: 2px solid #38bdf8;
+            position: relative;
+            animation: popIn 0.4s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .contenido-popup h3 {
+            color: #38bdf8;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .link-descarga {
+            display: block;
+            padding: 15px;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            text-decoration: none;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-weight: bold;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .link-descarga:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        .boton-cerrar {
+            margin-top: 25px;
+            background-color: #ef4444;
+            width: 100%;
+        }
+
+        .boton-cerrar:hover {
+            background-color: #dc2626;
+        }
+
+        .badge-proximamente {
+            background: #64748b;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .mod-card { flex-direction: column; text-align: center; gap: 15px; }
+            .mod-card:hover { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>🔥 Mods de Minecraft</h1>
+
+        <div class="mod-section">
+            <h2>⚔️ Espadas y Armas</h2>
+
+            <div class="mod-card">
+                <div class="mod-info">
+                    <h3>Short Sword Plus</h3>
+                    <p>Creado por @d_de_diego_d</p>
+                </div>
+                <button class="boton" onclick="abrirPopup('popup1')">Descargar</button>
+            </div>
+
+            <div class="mod-card">
+                <div class="mod-info">
+                    <h3>Weapons DragonHeart</h3>
+                    <p>Creado por Sky_Steve</p>
+                </div>
+                <button class="boton" onclick="abrirPopup('popup2')">Descargar</button>
+            </div>
+
+            <div class="mod-card">
+                <div class="mod-info">
+                    <h3>Elemental Weapons</h3>
+                    <p>Creado por BlockCraftAddons</p>
+                </div>
+                <button class="boton" onclick="abrirPopup('popup3')">Descargar</button>
+            </div>
+        </div>
+
+        <div class="mod-section">
+            <h2>🐾 Otros Mods</h2>
+            <div class="mod-card" style="justify-content: center; opacity: 0.7;">
+                <span class="badge-proximamente">Próximamente: Mod de Animales</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div id="popup1" class="popup">
+        <div class="contenido-popup">
+            <h3>Descargar Short Sword Plus</h3>
+            <a href="https://www.mediafire.com/file/43hl54j12px4wvx/SHORT+SWORD+PLUS.mcpack/file" target="_blank" class="link-descarga">🔽 Link Directo (MediaFire)</a>
+            <a href="https://mcpedl.com/short-sword-plus/" target="_blank" class="link-descarga">🌐 Página Original (MCPEDL)</a>
+            <button class="boton boton-cerrar" onclick="cerrarPopup('popup1')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="popup2" class="popup">
+        <div class="contenido-popup">
+            <h3>Descargar DragonHeart</h3>
+            <a href="https://www.mediafire.com/file/rxjv8gowg46bs6w/Weapons+DragonHeart+ADD-ON.rar/file" target="_blank" class="link-descarga">🔽 Link Directo (MediaFire)</a>
+            <a href="https://mcpedl.com/weapons-dragonheart-add-on/" target="_blank" class="link-descarga">🌐 Página Original (MCPEDL)</a>
+            <button class="boton boton-cerrar" onclick="cerrarPopup('popup2')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="popup3" class="popup">
+        <div class="contenido-popup">
+            <h3>Descargar Elemental Weapons</h3>
+            <a href="https://www.mediafire.com/file/rhqr9nh1qi69fbr/Elemental+Weapons+Expansion.rar/file" target="_blank" class="link-descarga">🔽 Link Directo (MediaFire)</a>
+            <a href="https://mcpedl.com/elemental-weapons-expansion-achievements-friendly/" target="_blank" class="link-descarga">🌐 Página Original (MCPEDL)</a>
+            <button class="boton boton-cerrar" onclick="cerrarPopup('popup3')">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function abrirPopup(id) {
+            document.getElementById(id).classList.add('activo');
+        }
+
+        function cerrarPopup(id) {
+            document.getElementById(id).classList.remove('activo');
+        }
+
+        // Cerrar al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target.classList.contains('popup')) {
+                event.target.classList.remove('activo');
+            }
+        }
+    </script>
+</body>
+</html>
